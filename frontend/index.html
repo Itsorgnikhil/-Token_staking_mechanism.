@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Art Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Header with Wallet Button -->
+        <div id="header">
+            <h1>🎨 NFT Art Marketplace</h1>
+            <button id="connectWallet" onclick="connectWallet()">Connect Wallet</button>
+        </div>
+
+        <!-- Main Container with Three Columns -->
+        <div id="main-container">
+            <!-- Mint Section -->
+            <section class="card">
+                <h2>Mint Your NFT</h2>
+                <input type="text" id="tokenURI" placeholder="Enter Token URI">
+                <button onclick="mintArt()">Mint NFT</button>
+            </section>
+
+            <!-- List Section -->
+            <section class="card">
+                <h2>List Your Art</h2>
+                <input type="number" id="tokenId" placeholder="Token ID">
+                <input type="number" id="price" placeholder="Price (ETH)">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="isAuction"> Auction
+                </label>
+                <input type="number" id="duration" placeholder="Duration (seconds)">
+                <button onclick="listArt()">List NFT</button>
+            </section>
+
+            <!-- Explore Marketplace Section -->
+            <section class="card">
+                <h2>Explore Marketplace</h2>
+                <div id="art-listings"></div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Wallet Connect Script -->
+    <script>
+        async function connectWallet() {
+            if (window.ethereum) {
+                try {
+                    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+                    document.getElementById("connectWallet").innerText = `Connected: ${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
+                    console.log("Connected account:", accounts[0]);
+                } catch (error) {
+                    console.error("User denied account access");
+                }
+            } else {
+                alert("MetaMask not detected. Please install MetaMask.");
+            }
+        }
+
+        // Cursor light effect follows mouse movement
+        document.addEventListener("mousemove", (e) => {
+            const cursorLight = document.querySelector(".cursor-light");
+            cursorLight.style.left = `${e.pageX}px`;
+            cursorLight.style.top = `${e.pageY}px`;
+        });
+    </script>
+
+    <!-- Cursor Light Effect -->
+    <div class="cursor-light"></div>
+</body>
+</html>
