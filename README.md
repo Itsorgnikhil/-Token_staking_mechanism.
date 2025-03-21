@@ -27,5 +27,6 @@ The goal of this project is to empower digital artists by providing a decentrali
 0xdC11023cf51077228c5cD719C3992272906e41Be
 
 ![image](https://github.com/user-attachments/assets/e4688375-d5b5-4d3c-93e7-9c362195a381)
+FRONTEND
 ![image](https://github.com/user-attachments/assets/bcda31f6-3f02-45e1-aebf-f6cb901f01ba)
 
